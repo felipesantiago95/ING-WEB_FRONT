@@ -40,7 +40,7 @@ export default {
   methods: {
     async fetchCapacities() {
       try {
-        const response = await axios.get('http://localhost:3000/api/aforo');
+        const response = await axios.get('https://ing-web-pr3.onrender.com/api/aforo');
         this.capacities = response.data;
       } catch (error) {
         console.error('Error al obtener aforos:', error.message);
@@ -49,14 +49,14 @@ export default {
     async handleFormSubmit(capacity) {
       if (this.isEdit) {
         try {
-          await axios.put(`http://localhost:3000/api/aforo/${capacity.aforo_id}`, capacity);
+          await axios.put(`https://ing-web-pr3.onrender.com/api/aforo/${capacity.aforo_id}`, capacity);
           this.fetchCapacities();
         } catch (error) {
           console.error('Error al actualizar aforo:', error.message);
         }
       } else {
         try {
-          await axios.post('http://localhost:3000/api/aforo', capacity);
+          await axios.post('https://ing-web-pr3.onrender.com/api/aforo', capacity);
           this.fetchCapacities();
         } catch (error) {
           console.error('Error al crear aforo:', error.message);
@@ -71,7 +71,7 @@ export default {
     },
     async handleDelete(aforo_id) {
       try {
-        await axios.delete(`http://localhost:3000/api/aforo/${aforo_id}`);
+        await axios.delete(`https://ing-web-pr3.onrender.com/api/aforo/${aforo_id}`);
         this.fetchCapacities();
       } catch (error) {
         console.error('Error al eliminar aforo:', error.message);

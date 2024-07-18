@@ -40,7 +40,7 @@ export default {
   methods: {
     async fetchCategories() {
       try {
-        const response = await axios.get('http://localhost:3000/api/categoria');
+        const response = await axios.get('https://ing-web-pr3.onrender.com/api/categoria');
         this.categories = response.data;
       } catch (error) {
         console.error('Error al obtener categorías:', error.message);
@@ -49,14 +49,14 @@ export default {
     async handleFormSubmit(category) {
       if (this.isEdit) {
         try {
-          await axios.put(`http://localhost:3000/api/categoria/${category.categoria_id}`, category);
+          await axios.put(`https://ing-web-pr3.onrender.com/api/categoria/${category.categoria_id}`, category);
           this.fetchCategories();
         } catch (error) {
           console.error('Error al actualizar categoría:', error.message);
         }
       } else {
         try {
-          await axios.post('http://localhost:3000/api/categoria', category);
+          await axios.post('https://ing-web-pr3.onrender.com/api/categoria', category);
           this.fetchCategories();
         } catch (error) {
           console.error('Error al crear categoría:', error.message);
@@ -71,7 +71,7 @@ export default {
     },
     async handleDelete(categoria_id) {
       try {
-        await axios.delete(`http://localhost:3000/api/categoria/${categoria_id}`);
+        await axios.delete(`https://ing-web-pr3.onrender.com/api/categoria/${categoria_id}`);
         this.fetchCategories();
       } catch (error) {
         console.error('Error al eliminar categoría:', error.message);

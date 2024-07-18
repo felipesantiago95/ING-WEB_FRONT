@@ -68,9 +68,9 @@ export default {
     async fetchData() {
       try {
         const [establecimientos, aforos, categorias] = await Promise.all([
-          axios.get('http://localhost:3000/api/establecimiento'),
-          axios.get('http://localhost:3000/api/aforo'),
-          axios.get('http://localhost:3000/api/categoria'),
+          axios.get('https://ing-web-pr3.onrender.com/api/establecimiento'),
+          axios.get('https://ing-web-pr3.onrender.com/api/aforo'),
+          axios.get('https://ing-web-pr3.onrender.com/api/categoria'),
         ]);
         this.establecimientos = establecimientos.data;
         this.aforos = aforos.data;
@@ -81,7 +81,7 @@ export default {
     },
     async fetchVentas() {
       try {
-        const response = await axios.get('http://localhost:3000/api/venta');
+        const response = await axios.get('https://ing-web-pr3.onrender.com/api/venta');
         this.ventas = response.data;
       } catch (error) {
         console.error('Error al obtener ventas:', error.message);
@@ -90,14 +90,14 @@ export default {
     async handleFormSubmit(venta) {
       if (this.isEdit) {
         try {
-          await axios.put(`http://localhost:3000/api/venta/${venta.venta_id}`, venta);
+          await axios.put(`https://ing-web-pr3.onrender.com/api/venta/${venta.venta_id}`, venta);
           this.fetchVentas();
         } catch (error) {
           console.error('Error al actualizar venta:', error.message);
         }
       } else {
         try {
-          await axios.post('http://localhost:3000/api/venta', venta);
+          await axios.post('https://ing-web-pr3.onrender.com/api/venta', venta);
           this.fetchVentas();
         } catch (error) {
           console.error('Error al crear venta:', error.message);
@@ -112,7 +112,7 @@ export default {
     },
     async handleDelete(venta_id) {
       try {
-        await axios.delete(`http://localhost:3000/api/venta/${venta_id}`);
+        await axios.delete(`https://ing-web-pr3.onrender.com/api/venta/${venta_id}`);
         this.fetchVentas();
       } catch (error) {
         console.error('Error al eliminar venta:', error.message);

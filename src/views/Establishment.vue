@@ -40,7 +40,7 @@ export default {
   methods: {
     async fetchEstablishments() {
       try {
-        const response = await axios.get('http://localhost:3000/api/establecimiento');
+        const response = await axios.get('https://ing-web-pr3.onrender.com/api/establecimiento');
         this.establishments = response.data;
       } catch (error) {
         console.error('Error al obtener establecimientos:', error.message);
@@ -49,14 +49,14 @@ export default {
     async handleFormSubmit(establishment) {
       if (this.isEdit) {
         try {
-          await axios.put(`http://localhost:3000/api/establecimiento/${establishment.establecimiento_id}`, establishment);
+          await axios.put(`https://ing-web-pr3.onrender.com/api/establecimiento/${establishment.establecimiento_id}`, establishment);
           this.fetchEstablishments();
         } catch (error) {
           console.error('Error al actualizar establecimiento:', error.message);
         }
       } else {
         try {
-          await axios.post('http://localhost:3000/api/establecimiento', establishment);
+          await axios.post('https://ing-web-pr3.onrender.com/api/establecimiento', establishment);
           this.fetchEstablishments();
         } catch (error) {
           console.error('Error al crear establecimiento:', error.message);
@@ -71,7 +71,7 @@ export default {
     },
     async handleDelete(establecimiento_id) {
       try {
-        await axios.delete(`http://localhost:3000/api/establecimiento/${establecimiento_id}`);
+        await axios.delete(`https://ing-web-pr3.onrender.com/api/establecimiento/${establecimiento_id}`);
         this.fetchEstablishments();
       } catch (error) {
         console.error('Error al eliminar establecimiento:', error.message);
